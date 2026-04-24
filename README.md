@@ -1,123 +1,141 @@
 # Online Job Portal
 
+A simple and lightweight Online Job Portal application built using Java and Spring Boot. This system allows job seekers to search and apply for jobs, while employers can post and manage job listings efficiently.
 
-The Online Job Portal using Spring Boot simple and lightweight job portal application built using Java and Spring Boot. It provides a platform for job seekers to browse and apply for available job listings, while recruiters can post job openings and manage applications
-
-
+---
 
 ## Overview
 
-The Online Job Portal ensures efficient job management for employers and job seekers. Employers can post job listings with detailed information, and employees can apply for jobs based on their qualifications and preferences. The system facilitates communication and updates between employers, employees, and administrators, streamlining the hiring process.
+The Online Job Portal streamlines the hiring process by connecting employers and job seekers on a single platform. Employers can create job postings with detailed descriptions, and candidates can explore opportunities based on their skills and preferences. The system also supports communication and application tracking.
+
+---
 
 ## Technologies Used
 
-- Java 8
-- Spring Boot 
-- JWT for user authentication
-- PostgreSQL 
-- Maven 
-- Postman 
-- Hibernate
-- Swagger (API's Documentation)
+* Java 8
+* Spring Boot
+* Spring Security with JWT Authentication
+* PostgreSQL
+* Hibernate (JPA)
+* Maven
+* Swagger (API Documentation)
+* Postman (API Testing)
+
+---
 
 ## Software Used
 
-- IntelliJ IDEA backend development
-- psql terminal-based front-end to PostgreSQL 
-- Postman for API's Testing
-  
-## User Modules
+* IntelliJ IDEA (Backend Development)
+* PostgreSQL (Database)
+* Postman (API Testing)
 
-1. **Administrator Module**
-   - Login to the system
-   - Register other administrators
-   - Manage job categories
-   - View all jobs and applicants
-   - View and manage employers and employees
+---
 
-2. **Employer Module**
-   - Register and login to the system
-   - Post job listings with detailed information
-   - View applicants for posted jobs
-   - Update job status for applicants
+## Features
 
-3. **Employee Module**
-   - Register and login to the system
-   - Search and view job listings
-   - Apply for jobs based on qualifications
-   - View and update profile information
-   - View applied jobs and status
-   - Cancel applied jobs
-## DB_SCHEMA
-  ![DB_SCHEMA](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/database/DATABASE%20SCHEMA.png)
+### Administrator Module
 
-## API's Endpoints
-  ### REST APIs for Auth
-  ![REST APIs for Auth](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Auth.PNG)
-  
-       - POST `/api/auth/login`   - Login and obtain JWT authentication token.
-       - POST `/api/auth/signin`  - Register a new user (Employer or Employee).
-  
-  ### REST APIs for Employer
-  ![REST APIs for Employer](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Employer.png)  
-      
-      - POST `/api/employers` Create new Employer
-      - POST `/api/employers/{employerId}/jobs` Create new Job
-      - POST `/api/employers/{employerId}/myApplications/{applicationId}` Update Application Status
-      - GET `/api/employers` List All Employers
-      - GET `/api/employers/{employerId}/jobs` Get All Jobs Posted By Give employer ID
-      - GET `/api/employers/{employerId}/myApplications` Get All Applications for Jobs Posted by Employer Id
-      - DELETE `/api/employers/{employerId}/jobs/{jobId}` Delete Job by Posted By Employer
-    
-  ### REST APIs for Employee
-    
-  ![REST APIs for Employee](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Employer.png)
-        
-      - POST `/api/employees` Create new Employee
-      - POST `/api/employees/{employeeId}/profileDetails` Edit Employee Pofile Details
-      - POST `/api/employees/{employeeId}/skills` Edit Employee Skills
-      - POST `/api/employees/{employeeId}/qualifications` Edit Employee Qualifications
-      - POST `/api/employees/{employeeId}/workExperiences` Edit Employee Work Experience
-      - POST `/api/employees/{employeeId}/jobs/{jobId}/apply` Employee Apply for job
-      - GET `/api/employees` List All Employees
-      - GET `/api/employees/{employeeId}` Get Employee By Id
-      - GET `/api/employees/{employeeId}/jobs/yourApplications` Get Details  of application submitted by employee  
-  
-  ### REST APIs for Job Categories
-  ![REST APIs for Job Categories](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Job%20Categories.PNG)
-  
-       - POST   `/api/jobCategories`      Create New Job Category
-       - GET    `/api/jobCategories`      List All Job Categories
-       - PUT    `/api/jobCategories/{id}` Update Existing Job Category
-       - DELETE `/api/jobCategories/{id}` Delete Existing Job Category
+* Login to the system
+* Register new administrators
+* Manage job categories
+* View all jobs and applicants
+* Manage employers and employees
 
-   ### REST APIs for Job
-  ![REST APIs for Job ](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Job.PNG)
-  
-      - Get `/api/jobs`         List All Jobs
-      - Get `/api/jobs/{jobId}` Get Job By Id
-      - Get `/api/jobs/search`  Search about Job by jobCategory & Location & Type (Part , Full) time
+### Employer Module
 
-   ### REST APIs for Job Application
-![REST APIs for Job Application ](https://raw.githubusercontent.com/SaiD-MH/Online-Job-Portal/main/src/main/resources/static/REST%20APIs%20for%20Job%20Application.PNG)
-  
-      - GET `/api/jobs/jobApplications` List All Applications
-      
-      
+* Register and login
+* Post job listings
+* View applicants for jobs
+* Update application status
+
+### Employee Module
+
+* Register and login
+* Search and view jobs
+* Apply for jobs
+* Update profile details
+* Track applied jobs and status
+* Cancel job applications
+
+---
+
+## Project Structure
+
+```
+src/
+ └── main/
+     ├── java/
+     └── resources/
+pom.xml
+
+
+### Authentication
+
+* POST `/api/auth/login` – Login and get JWT token
+* POST `/api/auth/signin` – Register new user
+
+### Employer APIs
+
+* POST `/api/employers` – Create employer
+* POST `/api/employers/{id}/jobs` – Create job
+* GET `/api/employers` – Get all employers
+* GET `/api/employers/{id}/jobs` – Get employer jobs
+* DELETE `/api/employers/{id}/jobs/{jobId}` – Delete job
+
+### Employee APIs
+
+* POST `/api/employees` – Create employee
+* GET `/api/employees` – Get all employees
+* GET `/api/employees/{id}` – Get employee by ID
+* POST `/api/employees/{id}/jobs/{jobId}/apply` – Apply for job
+
+### Job APIs
+
+* GET `/api/jobs` – Get all jobs
+* GET `/api/jobs/{id}` – Get job by ID
+* GET `/api/jobs/search` – Search jobs
+
+---
+
+## Database Schema
+
+(Add your DB schema image here if needed)
+
+---
+
 ## Setup Instructions
 
 1. Clone the repository:
-   ```bash
-   git clone https://github.com/SaiD-MH/Online-Job-Portal.git
 
-2. Open the backend project in your preferred IDE (e.g., Spring Tool Suite, IntelliJ IDEA)
+```
+git clone https://github.com/vanitha00/Online_Job_Application_System.git
+```
 
-3. Configure database settings:
-    - Open src/main/resources/application.properties.
-    - Update the database URL, username, password, and other configurations as per your local setup.
+2. Open the project in IntelliJ IDEA or any IDE.
+
+3. Configure database:
+
+* Go to `src/main/resources/application.properties`
+* Update:
+
+  * Database URL
+  * Username
+  * Password
 
 4. Run the application:
-    - Build and run the Spring Boot application.
-    - The application will be deployed locally at http://localhost:8080.
-  
+
+* Start Spring Boot application
+* Server runs at:
+
+```
+http://localhost:8080
+```
+
+---
+
+## Author
+
+Kotla Vanitha
+
+---
 
