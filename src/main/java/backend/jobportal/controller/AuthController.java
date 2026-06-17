@@ -1,7 +1,7 @@
 package backend.jobportal.controller;
 
 import backend.jobportal.payload.JwtResponseDto;
-import backend.jobportal.payload.LoginDto;
+import backend.jobportal.payload.LoginDto; 
 import backend.jobportal.service.AuthService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
